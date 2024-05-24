@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Giriş Ekranı</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="unvan">Ünvan:</label>
+        <input type="text" id="unvan" name="unvan"><br><br>
+        <label for="tckimlik">TCKimlik:</label>
+        <input type="text" id="tckimlik" name="tckimlik"><br><br>
+        <label for="parametre3">Parametre 3:</label>
+        <input type="text" id="parametre3" name="parametre3"><br><br>
+        <button type="submit">Giriş Yap</button>
+    </form>
+</body>
+</html>

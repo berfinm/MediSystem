@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasta Paneli</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Hasta Paneli</h2>
+        <p>Hoş geldiniz, {{ ad }} {{ soyad }}!</p>
+
+        <h3>Randevularınız:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Randevu Numarası</th>
+                    <th>Tarih</th>
+                    <th>Saat</th>
+                    <th>Doktor</th>
+                    <th>Hastane</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for randevu in randevu_detay %}
+                <tr>
+                    <td>{{ randevu.0 }}</td>
+                    <td>{{ randevu.1 }}</td>
+                    <td>{{ randevu.2 }}</td>
+                    <td>{{ randevu.4 }} {{ randevu.5 }} - {{ randevu.6 }}</td>
+                    <td>{{ randevu.7 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Randevu Sil</h3>
+        <form method="post" action="{% url 'hasta_giris' %}">
+            {% csrf_token %}
+            {{ form_delete.as_p }}
+            <input type="hidden" name="form_type" value="delete_randevu">
+            <button type="submit" class="btn btn-danger">Sil</button>
+        </form>
+
+        <h3>Randevu Düzenle</h3>
+        <form method="post" action="{% url 'hasta_giris' %}">
+            {% csrf_token %}
+            {{ form_edit.as_p }}
+            <input type="hidden" name="form_type" value="edit_randevu">
+            <button type="submit" class="btn btn-primary">Düzenle</button>
+        </form>
+
+        <form method="get" action="{% url 'anasayfa' %}">
+            <button type="submit" class="btn btn-secondary">Ana Sayfa</button>
+        </form>
+    </div>
+</body>
+</html>

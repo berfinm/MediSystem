@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Girişi</title>
+</head>
+<body>
+    <h2>Yönetici Girişi</h2>
+    <form action="{% url 'yonetici' %}" method="post">
+        {% csrf_token %}
+        <label for="ad">Adınız:</label><br>
+        <input type="text" id="ad" name="ad" required><br>
+        <label for="ad">Soyadınız:</label><br>
+        <input type="text" id="soyad" name="soyad" required><br>
+        <label for="kimlik">Kimlik Numaranız:</label><br>
+        <input type="text" id="kimlik" name="kimlik" required><br><br>
+        <input type="submit" value="Giriş Yap">
+    </form>
+</body>
+</html>

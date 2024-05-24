@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Olma Ekranı</title>
+</head>
+<body>
+    <h2>Kayıt Ol</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="action" value="kayıt">
+        <button type="submit">Kayıt Ol</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Randevu Ekle</title>
+</head>
+<body>
+    <h2>Randevu Ekle</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="action" value="search_randevu">
+        <button type="submit">Randevu Ara</button>
+    </form>
+
+    {% if randevular %}
+    <h2>Uygun Randevular</h2>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Formu yeniden render ederken kullanıcı girişlerini koru -->
+        {{ form.as_p }}
+        <ul>
+            {% for randevu in randevular %}
+            <li>
+                <input type="radio" name="selected_randevu" value="{{ randevu.0 }}">
+                {{ randevu.1 }} {{ randevu.2 }} - {{ randevu.3 }}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="hidden" name="action" value="select_randevu">
+        <button type="submit">Randevu Seç</button>
+    </form>
+    {% endif %}
+</body>
+</html>

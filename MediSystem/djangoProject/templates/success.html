@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Başarılı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h2 {
+            color: green;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>İşlem Başarıyla Tamamlandı!</h2>
+    <p>Anasayfaya dönmek için aşağıdaki butona tıklayabilirsiniz:</p>
+    <a href="{% url 'anasayfa' %}" class="btn">Anasayfaya Dön</a>
+</body>
+</html>

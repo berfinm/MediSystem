@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Paneli</title>
+</head>
+<body>
+    <h2>Yönetici Paneli</h2>
+    <p>Hoş geldiniz, {{ ad }} {{ soyad }}!</p>
+
+    <h3>Hastanedeki Doktorlar</h3>
+    <ul>
+        {% for doktor in doktorlar %}
+            <li>{{ doktor.0 }}: {{ doktor.1 }} {{ doktor.2 }} - {{ doktor.3 }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Doktor Sil</h3>
+    <form method="post" action="{% url 'yonetici_giris' %}">
+        {% csrf_token %}
+        {{ form_delete.as_p }}
+        <input type="hidden" name="form_type" value="delete_doctor">
+        <button type="submit">Sil</button>
+    </form>
+
+    <h3>Doktor Ekle</h3>
+    <form method="post" action="{% url 'yonetici_giris' %}">
+        {% csrf_token %}
+        {{ form_add.as_p }}
+        <input type="hidden" name="form_type" value="add_doctor">
+        <button type="submit">Ekle</button>
+    </form>
+
+    <!-- Kullanıcıyı ana sayfaya yönlendiren buton -->
+    <form method="get" action="{% url 'anasayfa' %}">
+        <button type="submit">Ana Sayfa</button>
+    </form>
+</body>
+</html>
